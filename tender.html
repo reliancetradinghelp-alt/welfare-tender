@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Заявка на тендер</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { background-color: var(--tg-theme-bg-color, #ffffff); color: var(--tg-theme-text-color, #000000); font-family: -apple-system, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .title { font-size: 18px; font-weight: bold; flex-grow: 1; }
+        .logo { width: 45px; height: 45px; border-radius: 10px; overflow: hidden; background-color: var(--tg-theme-secondary-bg-color, #f0f0f0); display: flex; align-items: center; justify-content: center; }
+        .logo img { width: 100%; height: 100%; object-fit: cover; }
+        .disclaimer { font-size: 12px; color: var(--tg-theme-hint-color, #999999); text-align: justify; margin-bottom: 25px; line-height: 1.5; }
+        .canvas-container { width: 100%; max-width: 400px; border: 2px dashed var(--tg-theme-button-color, #3390ec); border-radius: 12px; background-color: var(--tg-theme-secondary-bg-color, #f4f4f5); position: relative; }
+        canvas { width: 100%; height: 180px; display: block; touch-action: none; }
+        .clear-btn { background: none; border: none; color: var(--tg-theme-button-color, #3390ec); font-size: 14px; cursor: pointer; padding: 8px 0; align-self: flex-end; margin-bottom: 25px; font-weight: 500; }
+        .checkbox-wrapper { display: flex; align-items: flex-start; gap: 12px; width: 100%; margin-bottom: 30px; }
+        input[type="checkbox"] { margin-top: 2px; width: 20px; height: 20px; accent-color: var(--tg-theme-button-color, #3390ec); }
+        .checkbox-label { font-size: 14px; color: var(--tg-theme-text-color, #000000); line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">Официальная заявка на тендер</div>
+        <div class="logo"><img src="https://example.com/ваше-лого.jpg" alt="WeFlare Logo" onerror="this.style.display='none'"></div>
+    </div>
+    <div class="disclaimer">Настоящим я выражаю согласие на обработку моих персональных и корпоративных данных, а также подтверждаю свое намерение участвовать в закрытых торгах WeFlare.</div>
+    <div class="canvas-container"><canvas id="signatureCanvas"></canvas></div>
+    <button class="clear-btn" id="clearBtn">Очистить подпись</button>
+    <div class="checkbox-wrapper">
+        <input type="checkbox" id="termsCheck">
+        <label for="termsCheck" class="checkbox-label">Я подтверждаю свое участие и согласен с условиями корпоративной квоты</label>
+    </div>
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        tg.MainButton.text = "ПОДТВЕРДИТЬ И ОТПРАВИТЬ";
+        tg.MainButton.color = tg.themeParams.button_color || "#3390ec";
+        tg.MainButton.textColor = tg.themeParams.button_text_color || "#ffffff";
+        const canvas = document.getElementById("signatureCanvas");
+        const ctx = canvas.getContext("2d");
+        const clearBtn = document.getElementById("clearBtn");
+        const termsCheck = document.getElementById("termsCheck");
+        let isDrawing = false; let hasSignature = false;
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width; canvas.height = 180;
+            ctx.strokeStyle = tg.themeParams.text_color || "#000000"; ctx.lineWidth = 3; ctx.lineCap = "round";
+        }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
+        function startDrawing(e) { isDrawing = true; hasSignature = true; draw(e); checkForm(); }
+        function stopDrawing() { isDrawing = false; ctx.beginPath(); }
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            let x = clientX - rect.left; let y = clientY - rect.top;
+            ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y);
+        }
+        canvas.addEventListener("mousedown", startDrawing); canvas.addEventListener("mousemove", draw);
+        canvas.addEventListener("mouseup", stopDrawing); canvas.addEventListener("mouseout", stopDrawing);
+        canvas.addEventListener("touchstart", startDrawing, {passive: false}); canvas.addEventListener("touchmove", draw, {passive: false}); canvas.addEventListener("touchend", stopDrawing);
+        clearBtn.addEventListener("click", () => { ctx.clearRect(0, 0, canvas.width, canvas.height); hasSignature = false; checkForm(); });
+        termsCheck.addEventListener("change", checkForm);
+        function checkForm() { if (hasSignature && termsCheck.checked) { tg.MainButton.show(); } else { tg.MainButton.hide(); } }
+        Telegram.WebApp.onEvent('mainButtonClicked', function() { tg.sendData("tender_signed"); });
+    </script>
+</body>
+</html>

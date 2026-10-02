@@ -1,0 +1,140 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WeFlare v3 — пошаговая установка</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:#edf0e5;color:#173c2b;font:15px/1.8 Arial,sans-serif}header{padding:24px 35px;border-bottom:1px solid #c6d5bf;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-size:26px;font-weight:700;letter-spacing:-1px}header span{font-size:10px;letter-spacing:2px;color:#59715d}header a{font-size:12px}.layout{max-width:1280px;margin:auto;display:grid;grid-template-columns:245px 1fr;gap:38px;padding:35px 35px 80px}nav{position:sticky;top:30px;align-self:start}nav b{font-size:10px;letter-spacing:2px;color:#59715d;display:block;margin-bottom:17px}nav a{display:block;font-size:12px;line-height:1.5;padding:9px 0;border-bottom:1px solid #d3decc;text-decoration:none;color:#355e42}article{background:#fffef7;border:1px solid #cad8c3;border-radius:20px;padding:35px 39px;min-width:0}h1{font-size:39px;line-height:1.12;letter-spacing:-1.8px;font-weight:400;margin:5px 0 25px;max-width:750px}h2{font-size:25px;line-height:1.3;letter-spacing:-.8px;font-weight:500;margin:42px 0 18px;padding-top:25px;border-top:1px solid #d2deca}h3{font-size:19px;line-height:1.4;font-weight:500;margin:30px 0 15px}p{margin:15px 0}strong{font-weight:700;color:#163f2b}a{color:#1f754d;text-underline-offset:3px;overflow-wrap:anywhere}a:hover{text-decoration-thickness:2px}li{margin:10px 0;padding-left:4px}ul,ol{padding-left:24px}code{font:12px/1.7 Consolas,Menlo,monospace;background:#e7eddc;color:#2d5940;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}.codeblock{position:relative;background:#0d2924;border:1px solid #315346;border-radius:12px;padding:42px 18px 16px;margin:18px 0}.codeblock pre{margin:0;overflow:auto}.codeblock code{display:block;white-space:pre;background:none;color:#d6f1c3;padding:0;font-size:12px;overflow-wrap:normal}.copy{position:absolute;right:12px;top:9px;font:11px Arial;border:1px solid #547658;background:#143a2c;color:#daf1cb;border-radius:6px;padding:6px 10px;cursor:pointer}.copy:focus-visible,a:focus-visible{outline:3px solid #82ab5c;outline-offset:4px}.table-wrap{overflow:auto;margin:22px 0;border:1px solid #c6d5be;border-radius:10px}table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.65}th{text-align:left;background:#e1e9d6;padding:14px 13px;vertical-align:top}td{padding:14px 13px;border-top:1px solid #d4decc;vertical-align:top}td:first-child{min-width:160px}footer{color:#58715c;border-top:1px solid #d2deca;margin-top:35px;padding-top:20px;font-size:11px}.badge{display:inline-block;font-size:10px;letter-spacing:1.5px;background:#d7e9c5;border:1px solid #b4caa0;border-radius:20px;padding:5px 11px;margin-bottom:17px}@media(max-width:900px){.layout{display:block;padding:20px 15px 45px}nav{position:static;margin-bottom:23px;display:flex;gap:8px;flex-wrap:wrap}nav b{width:100%;margin:0}nav a{font-size:10px;background:#e1e9d6;border:1px solid #c4d1b8;border-radius:7px;padding:8px 10px;max-width:210px}article{padding:24px 20px}h1{font-size:31px}h2{font-size:23px}body{font-size:14px}header{padding:20px}header span{display:none}.brand{font-size:24px}.codeblock{margin-left:-5px;margin-right:-5px}}@media print{body{background:#fff}header,nav,.copy{display:none}.layout{display:block;padding:0}article{border:0;padding:0}h2,h3{break-after:avoid}pre,table{break-inside:avoid}.codeblock{background:#f3f3f3;border:1px solid #ccc;padding:15px}.codeblock code{color:#111}a{color:inherit}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style></head><body><header><div class="brand">WeFlare</div><span>RELEASE 03 / PROJECT GUIDE</span><a href="START_HERE.html">Витрина проекта ↗</a></header><div class="layout"><nav><b>В ЭТОМ ДОКУМЕНТЕ</b><a href="#section-2">1. Скачайте и посмотрите результат</a><a href="#section-3">2. Подготовьте момент обновления</a><a href="#section-4">3. Загрузите пять файлов на GitHub</a><a href="#section-5">4. Скачайте установщики на VPS</a><a href="#section-6">5. Проверьте совместимость и установите файлы</a><a href="#section-7">6. Запустите одну постоянную службу</a><a href="#section-8">7. Проверьте в Telegram</a><a href="#section-9">8. Как устроен Пульс</a><a href="#section-10">9. Эмодзи с вашим логотипом</a><a href="#section-11">10. Откат к вашей предыдущей версии</a><a href="#section-12">11. Если нужна помощь после установки</a></nav><article><span class="badge">V3 · 02 ОКТЯБРЯ 2026</span><h1 id="section-1">WeFlare v3 — установка на ваш сервер</h1>
+<p>В этом комплекте уже написаны новая форма, серверные функции, счётчик, кнопки и установщики. Вручную удалять блоки из <code>bot.py</code> не нужно. Установщик меняет только предусмотренные участки и сохраняет резервную копию.</p>
+<p><strong>Используйте архив <code>WEFLARE_V3_RELEASE.zip</code>. Архив с именем CHECKPOINT — промежуточное сохранение, он не предназначен для установки.</strong></p>
+<p>Обновление подготовлено для ранее выданной v2, файла <code>/root/bot.py</code> и сайта <code>https://reliancetradinghelp-alt.github.io/welfare-tender/</code>. Если у вас другие пути или изменённая v2, проверка остановит автоматическую замену. Сам сервер из этой переписки не обновлялся.</p>
+<h2 id="section-2">1. Скачайте и посмотрите результат</h2>
+<ol>
+<li>Скачайте <code>WEFLARE_V3_RELEASE.zip</code> на компьютер.</li>
+<li>Распакуйте архив. Найдите внутри папку <code>weflare_v3</code>.</li>
+<li>Откройте <code>START_HERE.html</code> двойным щелчком. Витрина позволяет переключить светлую/тёмную форму и ширину телефона.</li>
+<li>Попробуйте подпись: нарисовать → отменить штрих → очистить → вернуть очистку → отметить согласие → отправить. В локальном просмотре данные никуда не отправляются.</li>
+<li>Откройте карточки поддержки, конструктора, паспорта и Пульса. В Пульсе показан пример; настоящий сервер начнёт с 235065.</li>
+</ol>
+<p>HTML нужно открывать из распакованной папки, чтобы изображения и переходы между файлами работали. Просмотр отдельного файла прямо внутри ZIP может не поддерживать эти связи.</p>
+<h2 id="section-3">2. Подготовьте момент обновления</h2>
+<p>Завершите активные диалоги поддержки перед перезапуском. У исходного бота открытые тикеты и кэш восстановления находятся в оперативной памяти. Этот выпуск сохраняет эту модель: при перезапуске открытое состояние не переносится. Сохранённые тендерные заявки и новый индекс остаются в SQLite.</p>
+<p>Сохраните текущий <code>tender.html</code> с GitHub на компьютер либо убедитесь, что он есть в истории коммитов. В архиве дополнительно есть <code>baseline/weflare_v2.zip</code>. Это копия ранее выданной v2, а не снимок всех файлов вашего сервера.</p>
+<p><strong>Не загружайте на публичный GitHub:</strong> настоящий <code>bot.py</code> с токеном, <code>.env</code>, файлы SQLite, папку <code>weflare_backups</code>. Пять файлов в следующем шаге не содержат вашего токена.</p>
+<h2 id="section-4">3. Загрузите пять файлов на GitHub</h2>
+<p>Откройте ваш репозиторий: <a href="https://github.com/reliancetradinghelp-alt/welfare-tender" target="_blank" rel="noopener noreferrer">https://github.com/reliancetradinghelp-alt/welfare-tender</a></p>
+<p>Убедитесь, что выбрана та ветка и папка, из которых публикуется существующий сайт. Обычно это <code>main</code>, корень репозитория. Фактическую настройку видно в <strong>Settings → Pages</strong>. Настройку работающего сайта менять не требуется.</p>
+<p>В <strong>Code → Add file → Upload files</strong> перетащите именно эти файлы:</p>
+<div class="table-wrap"><table><thead><tr><th>Из распакованного архива</th><th>Как должен называться файл в корне репозитория</th></tr></thead><tbody>
+<tr><td><code>weflare_v3/tender.html</code></td><td><code>tender.html</code> — обновить существующий</td></tr>
+<tr><td><code>weflare_v3/intent.html</code></td><td><code>intent.html</code> — добавить</td></tr>
+<tr><td><code>weflare_v3/activity.html</code></td><td><code>activity.html</code> — добавить</td></tr>
+<tr><td><code>weflare_v3/server/install_weflare_v3.py</code></td><td><code>install_weflare_v3.py</code> — добавить</td></tr>
+<tr><td><code>weflare_v3/server/setup_weflare_service.py</code></td><td><code>setup_weflare_service.py</code> — добавить</td></tr>
+</tbody></table></div>
+<p>Для двух Python-файлов откройте папку <code>server</code> на компьютере и перетащите сами файлы. <strong>Не перетаскивайте папку <code>server</code> целиком</strong>, иначе команды ниже будут искать их по другому адресу.</p>
+<p>Нажмите <strong>Commit changes</strong>, например с сообщением <code>WeFlare v3: design, briefs, pulse, service</code>. Дождитесь успешного обновления GitHub Pages в Actions/Pages. Ничего старого массово удалять не нужно.</p>
+<p>Проверьте в обычном браузере три адреса:</p>
+<ul>
+<li><a href="https://reliancetradinghelp-alt.github.io/welfare-tender/tender.html?preview=1" target="_blank" rel="noopener noreferrer">https://reliancetradinghelp-alt.github.io/welfare-tender/tender.html?preview=1</a></li>
+<li><a href="https://reliancetradinghelp-alt.github.io/welfare-tender/intent.html?preview=1" target="_blank" rel="noopener noreferrer">https://reliancetradinghelp-alt.github.io/welfare-tender/intent.html?preview=1</a></li>
+<li><a href="https://reliancetradinghelp-alt.github.io/welfare-tender/activity.html?preview=1" target="_blank" rel="noopener noreferrer">https://reliancetradinghelp-alt.github.io/welfare-tender/activity.html?preview=1</a></li>
+</ul>
+<p>Это только просмотр. Уберите <code>preview=1</code> не вручную, а открывайте боевую форму кнопкой из бота после установки. Старые ссылки без индекса остаются совместимыми с подписью.</p>
+<h2 id="section-5">4. Скачайте установщики на VPS</h2>
+<p>Откройте тот терминал, где вы уже управляли ботом. Дальнейшие команды этого раздела выполняются <strong>на VPS от root</strong>, а не в терминале компьютера.</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>cd /root
+python3 --version
+ls -l /root/bot.py /root/weflare_tender.py</code></pre></div>
+<p>Если файлы найдены, скачайте установщики. Команды ниже предполагают ветку <code>main</code>; если в шаге 3 была другая ветка, замените <code>/main/</code> в обоих адресах её именем.</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>curl -fL --retry 2 &#x27;https://raw.githubusercontent.com/reliancetradinghelp-alt/welfare-tender/main/install_weflare_v3.py&#x27; -o /root/install_weflare_v3.py
+curl -fL --retry 2 &#x27;https://raw.githubusercontent.com/reliancetradinghelp-alt/welfare-tender/main/setup_weflare_service.py&#x27; -o /root/setup_weflare_service.py</code></pre></div>
+<p>При <code>404</code>, <code>403</code> или другой ошибке не продолжайте следующими командами: файл не скачан. Проверьте ветку и расположение файлов. Если репозиторий закрытый, не вставляйте токен GitHub в команды: передайте два установщика через уже используемый SFTP-клиент в <code>/root/</code>.</p>
+<p>Альтернатива через SCP: в терминале компьютера выполните команду ниже, подставив путь к распакованной папке и IP своего VPS. Она копирует только два установщика, не меняя работающего бота.</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>scp &#x27;/ПУТЬ/К/weflare_v3/server/install_weflare_v3.py&#x27; &#x27;/ПУТЬ/К/weflare_v3/server/setup_weflare_service.py&#x27; root@IP_СЕРВЕРА:/root/</code></pre></div>
+<p>Дальше вернитесь в терминал VPS. Не отправляйте сюда пароль, приватный ключ или токен бота.</p>
+<h2 id="section-6">5. Проверьте совместимость и установите файлы</h2>
+<p>Сначала только проверка:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>python3 /root/install_weflare_v3.py /root/bot.py --check</code></pre></div>
+<p>Нужен Python 3.9 или новее. Ожидается <strong>«ПРОВЕРКА ПРОЙДЕНА»</strong>. Эта команда не изменяет рабочие файлы и не останавливает бота.</p>
+<p>Если написано «отличается от выданной v2» или «структура поддержки отличается», не удаляйте старые файлы и не обходите проверку. Нужна адаптация к вашей текущей копии. Достаточно прислать текст ошибки без секретов; повторная установка старой версии поверх ваших изменений не требуется.</p>
+<p>После успешной проверки:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>python3 /root/install_weflare_v3.py /root/bot.py</code></pre></div>
+<p>Ожидается <strong>«УСТАНОВЛЕНО v3»</strong> и путь резервной копии вида <code>/root/weflare_backups/v3-...</code>. Сохраните этот путь у себя.</p>
+<p>Установщик:</p>
+<ul>
+<li>копирует текущий <code>bot.py</code>, заменяемые модули и согласованный снимок SQLite в резервную папку;</li>
+<li>устанавливает четыре новых модуля рядом с <code>bot.py</code>;</li>
+<li>подключает оформление оценки/квитанции и защиту от второго процесса;</li>
+<li>включает режим 24/7, исправляет продолжение текущего клиентского тикета, освобождение блокировки после ошибки и возврат без кэша;</li>
+<li>сохраняет камеры, список имён, случайный выбор и прежние callback ID оценки;</li>
+<li>не запускает и не останавливает процессы самостоятельно.</li>
+</ul>
+<p>Не редактируйте строки <code>API_TOKEN</code> и не заменяйте свой основной <code>bot.py</code> файлом из чужого примера. В данном архиве полного <code>bot.py</code> намеренно нет: обновляется ваш существующий файл.</p>
+<h2 id="section-7">6. Запустите одну постоянную службу</h2>
+<p>Выполните предварительную проверку:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>python3 /root/setup_weflare_service.py /root/bot.py</code></pre></div>
+<p>Ожидается <strong>«ПРОВЕРКА ПРОЙДЕНА. Ничего не изменено»</strong>. Покажутся найденные PID, путь Python и будущая конфигурация службы.</p>
+<p>Если раньше бот работал в виртуальном окружении, укажите тот же Python. Пример пути ниже условный — используйте путь вашего окружения, а не создавайте новое:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>python3 /root/setup_weflare_service.py /root/bot.py --python /root/venv/bin/python</code></pre></div>
+<p>Если проверка с обычным <code>python3</code> прошла, примените настройку:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>python3 /root/setup_weflare_service.py /root/bot.py --apply</code></pre></div>
+<p>Если использовали <code>--python</code>, добавьте тот же параметр и к команде с <code>--apply</code>.</p>
+<p>Скрипт проверяет зависимости и генерацию кириллической квитанции <strong>до остановки</strong>, мягко завершает только процессы, запускающие именно <code>/root/bot.py</code>, создаёт <code>weflare-bot.service</code> и включает её автозапуск. Случайный другой Python-процесс он не завершает. Если бот управляется другой службой, скрипт остановит переключение для разбора конфигурации.</p>
+<p>Успешный результат содержит <code>active</code>. После этого проверьте:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>systemctl status weflare-bot --no-pager
+journalctl -u weflare-bot -n 60 --no-pager</code></pre></div>
+<p>Служба перезапускает процесс при аварийном завершении и запускается после перезагрузки VPS. Она не может сама вылечить неверный токен, отсутствие прав Telegram или недоступную сеть. При постоянной ошибке смотрите журнал.</p>
+<p><strong>После этого больше не запускайте этот бот через <code>nohup python3 bot.py</code> или второе окно <code>python3 bot.py</code>.</strong> Обычное управление:</p>
+<p>Перезапустить после изменения файлов:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>systemctl restart weflare-bot</code></pre></div>
+<p>Остановить, только когда это действительно нужно:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>systemctl stop weflare-bot</code></pre></div>
+<p>Запустить после остановки:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>systemctl start weflare-bot</code></pre></div>
+<h2 id="section-8">7. Проверьте в Telegram</h2>
+<p>Проверяйте клиентский сценарий со второго аккаунта: ответственный аккаунт поддержки и клиент должны быть разными участниками. Камеры для проверки этого релиза не нужны.</p>
+<div class="table-wrap"><table><thead><tr><th>Действие</th><th>Ожидаемый результат</th></tr></thead><tbody>
+<tr><td>Клиент пишет обычное сообщение</td><td>Старый сценарий с одним случайным именем и одним номером обращения</td></tr>
+<tr><td>Клиент пишет повторно</td><td>Сохраняются тот же номер и имя, повторное подключение не запускается</td></tr>
+<tr><td>Клиент пишет ночью</td><td>Сразу доступен обычный сценарий; ожидание до утра не включается</td></tr>
+<tr><td>Отвечаете со своего аккаунта</td><td>Ответ виден в том же чате; новые реальные менеджеры не создаются</td></tr>
+<tr><td>Завершаете через прежний <code>/f</code></td><td>Появляются обновлённые кнопки оценки</td></tr>
+<tr><td>Нажимаете оценку</td><td>Прежний сценарий эффекта и новая квитанция с этим тикетом</td></tr>
+<tr><td>Возврат к автоматически закрытому обращению</td><td>Кнопка восстановления работает; при отсутствии старого кэша действует прежний случайный fallback</td></tr>
+<tr><td>Пишете «тендер» в поддержке</td><td>Ссылка ведёт в личку бота к форме</td></tr>
+<tr><td><code>/start</code> в боте</td><td>Появляется клавиатура «✦ Открыть форму заявки» под строкой ввода</td></tr>
+<tr><td>Форма → подпись → согласие → отправка</td><td>Получаете подтверждение с номером заявки; при деловом входе — также сообщение в исходном диалоге, если Telegram разрешает отправку</td></tr>
+<tr><td><code>/applications</code> и <code>/receipt</code></td><td>Только ваши заявки и копия выбранной/последней</td></tr>
+<tr><td><code>/brief</code> → сохранить → <code>/start</code> → подписать</td><td>Параметры конструктора прикладываются к этой заявке</td></tr>
+<tr><td><code>/passport</code></td><td>HTML-паспорт со временем выдачи/получения; решение не выдумывается</td></tr>
+<tr><td><code>/pulse</code></td><td>Начальный индекс 235065, отдельное число ваших реальных заявок и кнопка графика</td></tr>
+</tbody></table></div>
+<p>Для подписи открывайте <strong>новую кнопку клавиатуры</strong> после <code>/start</code>. Верхняя кнопка меню Mini App — другой режим Telegram; отправка через <code>sendData</code> рассчитана на запуск с клавиатуры. Если клавиатура скрыта, нажмите её значок рядом с полем ввода.</p>
+<p>На телефоне дополнительно проверьте светлую/тёмную тему, поворот экрана, отмену штриха и видимость нижней кнопки. Рисунок подписи должен сохраняться при смене темы/размера. Реальные iOS/Android-клиенты при подготовке архива не проверялись.</p>
+<p>Если открывается старый дизайн, сначала дождитесь успешной публикации Pages, закройте старую Mini App и получите свежую кнопку через <code>/start</code>. Сервер добавляет параметр версии к URL. Удаление исходников из GitHub не исправляет уже открытое старое окно или второй процесс.</p>
+<h2 id="section-9">8. Как устроен Пульс</h2>
+<ul>
+<li>Первый календарный день: ровно <strong>235065</strong>. Это начальная отметка, поэтому «за день» сначала равно нулю.</li>
+<li>Со следующего дня: новая прибавка от <strong>50 до 170</strong> по времени <strong>UTC+3</strong>.</li>
+<li><strong>64%</strong> выбора диапазона 50–89, <strong>28%</strong> — 90–124, <strong>8%</strong> — 125–170. Внутри диапазона выбирается число; это не три фиксированных значения.</li>
+<li>В работающем боте фон проверяет дату раз в 15 минут. <code>/pulse</code> или выдача формы актуализируют данные сразу.</li>
+<li>Перезапуск, повторное открытие и несколько клиентов не сбрасывают индекс и не повторяют прибавку.</li>
+<li>Если сервер был выключен, пропущенные дни учитываются при запуске. История до первого запуска не придумывается.</li>
+<li>Отображается до 28 дней истории, рост за 7 дней, лучший дневной шаг и ближайший рубеж.</li>
+<li>Экран показывает <strong>снимок</strong>, а не постоянное соединение с сервером. «Обновить снимок» возвращает запрос боту; он выдаёт новую кнопку с актуальными данными.</li>
+<li>Индекс обозначен как демонстрационный и не влияет на заявки, оценки или назначение отображаемого имени.</li>
+</ul>
+<p>Не удаляйте <code>/root/weflare_tender.sqlite3</code>: там хранятся заявки, черновики, очередь уведомлений и индекс. Его перенос на другой VPS выполняется вместе с ботом и модулями.</p>
+<h2 id="section-10">9. Эмодзи с вашим логотипом</h2>
+<p>Файл находится в <code>assets/weflare_check_emoji.webm</code>. Параметры: 100×100, 3 секунды, 30 FPS, VP9, без звука, около 29 KB. Логотип собирается и переходит в фирменную бирюзовую галочку. Это оформление бренда, а не присвоение Telegram-верификации.</p>
+<p>Откройте официальный бот <a href="https://t.me/Stickers," target="_blank" rel="noopener noreferrer">https://t.me/Stickers,</a> выберите создание набора эмодзи и видеоформат, затем отправьте WEBM <strong>как файл</strong>, без преобразования в обычное видео. Следуйте его текущим подсказкам по названию, привязке эмодзи и публикации набора. GIF рядом — только предпросмотр, для загрузки используйте WEBM.</p>
+<p>Требования Telegram: <a href="https://core.telegram.org/stickers/webm-vp9-encoding" target="_blank" rel="noopener noreferrer">https://core.telegram.org/stickers/webm-vp9-encoding</a></p>
+<h2 id="section-11">10. Откат к вашей предыдущей версии</h2>
+<p>Если v3 уже установлена и служба создана:</p>
+<div class="codeblock"><button class="copy" type="button">Скопировать</button><pre><code>systemctl stop weflare-bot
+python3 /root/install_weflare_v3.py /root/bot.py --rollback
+systemctl start weflare-bot
+systemctl status weflare-bot --no-pager</code></pre></div>
+<p>Между командами проверяйте результат. Если откат остановился из-за последующих изменений файлов, не запускайте поверх него другие установщики: нужно сопоставить изменения с сохранённой резервной копией.</p>
+<p>Откат восстанавливает именно файлы, которые были на вашем VPS перед v3. <strong>Рабочая SQLite не заменяется старой копией</strong>, поэтому новые заявки не теряются. Дополнительные таблицы остаются; v2 их не использует. В v2 не работают новые <code>/brief</code>, <code>/passport</code>, <code>/pulse</code> и обработчик очереди повторов v3. Неотправленные уведомления остаются в базе до возврата на v3.</p>
+<p>На GitHub верните прежний <code>tender.html</code> из истории коммитов или из сохранённой копии. Новые <code>intent.html</code>/<code>activity.html</code> можно оставить, но старая v2 их не обслуживает. Служба systemd остаётся и запускает восстановленный <code>bot.py</code>; отдельный <code>nohup</code> не нужен.</p>
+<p>Если настройка службы ещё не применялась, старый процесс продолжает работать. Откат файлов сам по себе его не перезапускает. Если ошибка возникла <strong>во время переключения</strong> и служба не запустилась, сначала сохраните вывод установщика и <code>journalctl</code>: часть шагов могла уже выполниться. Не запускайте несколько копий «на всякий случай».</p>
+<h2 id="section-12">11. Если нужна помощь после установки</h2>
+<p>Для разбора достаточно текста ошибки, результата <code>systemctl status weflare-bot --no-pager</code> и последних строк журнала. Перед отправкой закройте токены/секреты, если сторонняя библиотека напечатала их в исключении. Номер чужой заявки и рисунок подписи для диагностики не нужны.</p>
+<p>Камеры, внешние подключения и полноценная многопользовательская панель операторов не входят в этот выпуск. Функции бота, формы, конструктора, паспорта и индекса запускаются описанной установкой; проверка настоящего Telegram завершает её.</p>
+<p>Основа способа отправки Mini App: <a href="https://core.telegram.org/bots/webapps#keyboard-button-mini-apps" target="_blank" rel="noopener noreferrer">https://core.telegram.org/bots/webapps#keyboard-button-mini-apps</a></p><footer>WeFlare v3 · Сохранённый комплект проекта. Команды выполняются вами на вашем VPS; открытие этого файла ничего не устанавливает.</footer></article></div><script>document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',async function(){var code=b.parentElement.querySelector('code');try{await navigator.clipboard.writeText(code.textContent);b.textContent='Скопировано';setTimeout(function(){b.textContent='Скопировать';},2000);}catch(e){var range=document.createRange();range.selectNodeContents(code);var s=window.getSelection();s.removeAllRanges();s.addRange(range);b.textContent='Выделено: ⌘C / Ctrl+C';}});});</script></body></html>
